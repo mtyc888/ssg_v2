@@ -18,7 +18,7 @@ class HTMLNode:
         Child classes will override this method.
     """
     def to_html(self):
-        raise NotImplementedError
+        raise NotImplementedError("to_html method not implemented")
     """
         This returns a string that represents the HTML attributes of the node.
         For example this:
@@ -57,7 +57,12 @@ class LeafNode(HTMLNode):
             raise ValueError("All leaf nodes must have a value")
         if self.tag is None:
             return self.value
-        return f"<{self.tag}>{self.value}</{self.tag}>"
+        
+        attr_str = ""
+        if self.props:
+            for key, value in self.props.items():
+                attr_str += f" {key}={value}"
+        return f"<{self.tag}{attr_str}>{self.value}</{self.tag}>"
 """
     Any HTMLNode that is not a LeafNode is a parent node
 """
