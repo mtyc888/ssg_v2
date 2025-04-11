@@ -39,8 +39,8 @@ def generate_page(from_path, template_path, output_path, basepath="/"):
     final_html = final_html.replace('src="/', f'src="{basepath}')
 
     # Replace relative URLs with the basepath (without quotes)
-    final_html = final_html.replace('href=/', f'href={basepath}')
-    final_html = final_html.replace('src=/', f'src={basepath}')
+    final_html = final_html.replace('href=/', f'href="{basepath}')
+    final_html = final_html.replace('src=/', f'src="{basepath}')
 
     # Create directory if it doesn't exist
     dest_dir = os.path.dirname(output_path)
