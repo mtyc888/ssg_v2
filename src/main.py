@@ -9,7 +9,7 @@ def main():
     static_to_public("./static", "./docs")
     basepath = sys.argv[1] if len(sys.argv) > 1 else "/"
     #generate a page
-    generate_pages_recursive("./content","./template.html", "./docs")
+    generate_pages_recursive("./content","./template.html", "./docs", basepath)
 
 def clear_public(path):
     for filename in os.listdir(path):
