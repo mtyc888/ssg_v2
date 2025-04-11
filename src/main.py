@@ -1,13 +1,15 @@
 import os
 import shutil
+import sys
 from gencontent import generate_page, generate_pages_recursive
 def main():
     #delete everything in public directory
-    clear_public("./public")
+    clear_public("./docs")
     #copy all contents from static to public
-    static_to_public("./static", "./public")
+    static_to_public("./static", "./docs")
+    basepath = sys.argv[1] if len(sys.argv) > 1 else "/"
     #generate a page
-    generate_pages_recursive("./content","./template.html", "./public")
+    generate_pages_recursive("./content","./template.html", "./docs")
 
 def clear_public(path):
     for filename in os.listdir(path):
